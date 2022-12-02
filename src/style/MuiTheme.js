@@ -3,40 +3,6 @@ import { blueGrey, green, purple } from '@mui/material/colors';
 
 
 export const MuiTheme = createTheme({
-    overrides: {
-        MuiPickersToolbar: {
-            toolbar: {
-                backgroundColor: "red",
-            },
-        },
-        MuiPickersCalendarHeader: {
-            switchHeader: {
-                backgroundColor: "red",
-                color: "red",
-            },
-        },
-        MuiPickersDay: {
-            day: {
-                color: "light-gray",
-                fontFamily: "\"Do Hyeon\", sans-serif",
-                backgroundColor: "white",
-                borderRadius: "0px",
-            },
-            container: {
-                backgroundColor: "black"
-            },
-            daySelected: {
-                backgroundColor: "",
-                color: "light-gray"
-            },
-            dayDisabled: {
-                color: "black",
-            },
-            current: {
-                color: "",
-            },
-        },
-    },
     status: {
         danger: '#e53e3e',
     },
@@ -51,7 +17,12 @@ export const MuiTheme = createTheme({
         },
         neutral: {
             main: blueGrey[600],
-            contrastText: 'black',
+            contrastText: purple,
         },
     },
+    components: {
+        MuiPaper: {
+            backgroundColor: "red"
+        }
+    }
 });
