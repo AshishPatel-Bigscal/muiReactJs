@@ -7,20 +7,22 @@ import { Stack } from '@mui/system';
 import { ThemeProvider } from "@mui/material/styles";
 import { MuiTheme } from "../style/MuiTheme";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { Switch } from '@mui/material';
 
 
 
 const MuiDatePicker = () => {
-    const darkMode = true;
+    const [darkMode, setDarkMode] = useState(false)
     const [dateValue, setDateValue] = useState(moment)
+    const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
     useEffect(() => {
         // console.log(moment().utc());
     }, [dateValue])
 
-    const popperSx = {
+    const popperSxLight = {
         "& .MuiPaper-root": {
-            backgroundColor: (darkMode) ? "darkGrey" : "smokeWhite"
+            backgroundColor: "smokeWhite"
         },
         "& .MuiCalendarPicker-root": {
             backgroundColor: "darkGrey"
@@ -30,10 +32,30 @@ const MuiDatePicker = () => {
             backgroundColor: "silver"
         },
         "& .MuiDayPicker-header": {
-            backgroundColor: (darkMode) ? "black" : "white"
+            backgroundColor: "white"
         },
         "& .MuiDayPicker-weekDayLabel": {
-            color: (darkMode) ? "white" : "black",
+            color: "black"
+        },
+        "& .MuiTabs-root": { backgroundColor: "dark" }
+    };
+    const popperSxDark = {
+        "& .MuiPaper-root": {
+            backgroundColor: "darkGrey"
+        },
+        "& .MuiCalendarPicker-root": {
+            backgroundColor: "silver",
+            color: "blue"
+        },
+        "& .MuiPickersDay-dayWithMargin": {
+            color: "black",
+            backgroundColor: "silver"
+        },
+        "& .MuiDayPicker-header": {
+            backgroundColor: "black"
+        },
+        "& .MuiDayPicker-weekDayLabel": {
+            color: "white"
         },
         "& .MuiTabs-root": { backgroundColor: "dark" }
     };
@@ -45,12 +67,12 @@ const MuiDatePicker = () => {
                     <Stack spacing={3}>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <MobileDateTimePicker
-                                DialogProps={{ sx: popperSx }} // for mobile
+                                DialogProps={{ sx: (darkMode) ? popperSxDark : popperSxLight }} // for mobile
                                 // PopperProps={{ sx: popperSx }} // for native
                                 minDate={moment('2001')}
                                 maxDate={moment('2100-12-01')}
                                 // views={["year", "month", "day"]}
-                                label="Year"
+                                label="From"
                                 value={dateValue}
                                 onChange={(newValue) => {
                                     setDateValue(newValue);
@@ -80,6 +102,11 @@ const MuiDatePicker = () => {
                 </ThemeProvider>
                 {/* <span>Selected Date : {dateValue._d}</span> */}
             </div>
+            <Switch
+                {...label}
+                onChange={() => { setDarkMode(!darkMode) }}
+            />
+            <Switch {...label} defaultChecked color="secondary" />
         </div>
     )
 }
