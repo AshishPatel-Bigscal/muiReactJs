@@ -43,7 +43,7 @@ export const MuiTheme = createTheme({
     palette: {
         primary: {
             // Purple and green play nicely together.
-            main: purple[500],
+            main: green[900],
         },
         secondary: {
             // This is green.A700 as hex.
@@ -54,5 +54,4 @@ export const MuiTheme = createTheme({
             contrastText: 'black',
         },
     },
-
 });

@@ -9,6 +9,7 @@ import { MuiTheme } from "../style/MuiTheme";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 
+
 const MuiDatePicker = () => {
     const darkMode = true;
     const [dateValue, setDateValue] = useState(moment)
@@ -34,7 +35,7 @@ const MuiDatePicker = () => {
         "& .MuiDayPicker-weekDayLabel": {
             color: (darkMode) ? "white" : "black",
         },
-        "& .MuiTabs-root": { backgroundColor: "orange" }
+        "& .MuiTabs-root": { backgroundColor: "dark" }
     };
     return (
         <div>
